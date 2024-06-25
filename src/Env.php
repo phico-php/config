@@ -11,8 +11,11 @@ class Env
     {
         global $_ENV;
 
-        if (files()->exists(path('.env'))) {
-            $lines = files()->lines(path('.env'));
+        // load default env files
+        $file = files(path('.env'));
+
+        if ($file->exists()) {
+            $lines = $file->lines();
             foreach ($lines as $line) {
                 $line = trim($line);
                 if (!empty($line)) {

@@ -14,7 +14,7 @@ class Config
         $this->config = [];
 
         // parse configs
-        foreach (folders()->list(path($folder)) as $file) {
+        foreach (folders(path($folder))->list() as $file) {
             // @TODO handle folders
             $key = basename(str_replace(".php", "", $file));
             $this->config[$key] = require (path("$folder/$file"));
@@ -23,7 +23,7 @@ class Config
         // parse override folder configs
         if ($overrides) {
             // load all config from overrides folder
-            foreach (folders()->list(path("$folder/$overrides")) as $file) {
+            foreach (folders(path("$folder/$overrides"))->list() as $file) {
                 $key = basename(str_replace(".php", "", $file));
                 $this->config[$key] = require (path("$folder/$file"));
             }
