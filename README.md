@@ -28,14 +28,14 @@ return [
 Fetch a defined value
 
 ```php
-echo config('apis.example.secret');
+echo config()->get('apis.example.secret');
 //  top-secret
 ```
 
 Return a default value if the config is missing
 
 ```php
-echo config('apis.example.missing', 'abc-123');
+echo config()->get('apis.example.missing', 'abc-123');
 //  abc-123
 ```
 
