@@ -23,6 +23,12 @@ class Env
                     if (preg_match('/^["\'].*["\']$/', $v)) {
                         $v = substr($v, 1, -1);
                     }
+                    if (is_string($v) and strtolower($v) === "true") {
+                        $v = true;
+                    }
+                    if (is_string($v) and strtolower($v) === "false") {
+                        $v = false;
+                    }
                     $_ENV[$k] = $v;
                 }
             }
