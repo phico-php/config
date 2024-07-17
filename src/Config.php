@@ -29,11 +29,6 @@ class Config
             }
         }
     }
-    // #[\Deprecated]
-    public function __invoke(string $key, mixed $default = null): mixed
-    {
-        return $this->get($key, $default);
-    }
     public function get(string $key, mixed $default = null): mixed
     {
         $keys = explode('.', $key);
