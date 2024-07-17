@@ -48,4 +48,20 @@ class Config
 
         return $value;
     }
+    public function set(string $key, mixed $value): self
+    {
+        $config = &$this->config;
+
+        $keys = explode('.', $key);
+        $last = array_pop($keys);
+        foreach ($keys as $k) {
+            if (!isset($config[$k])) {
+                $config[$k] = [];
+            }
+            $config = &$config[$k];
+        }
+
+        $config[$last] = $value;
+        return $this;
+    }
 }
